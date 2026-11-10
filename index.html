@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dicionário de Dados - Sistema de Gerenciamento para Salão de Beleza</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <button id="menuBtn" class="icon-btn" type="button" aria-controls="sidebar" aria-expanded="false">Menu</button>
+  <div class="brand"><strong>Dicionário de Dados - Sistema de Gerenciamento para Salão de Beleza</strong><span>Fátima Aparecida de Lima Cabeleireira</span></div>
+  <button id="themeBtn" class="btn ghost" type="button">Modo escuro</button>
+</header>
+
+<aside id="sidebar" class="sidebar"><nav id="nav" aria-label="Tabelas do sistema"></nav></aside>
+
+<main class="main">
+  <section id="identificacao" class="card">
+    <h2>Identificação do projeto</h2>
+    <dl class="kv">
+      <dt>Escopo</dt>
+      <dd>Banco de dados de apoio à operação e às finanças do salão Fátima Aparecida de Lima Cabeleireira: cadastro de clientes e fichas capilares, catálogo de serviços e insumos, agenda sem conflitos, atendimentos, pagamentos, despesas, fechamento de caixa, controle de estoque, controle de acesso (RBAC) e trilha de auditoria, normalizado até a 3ª Forma Normal.</dd>
+      <dt>Tecnologia</dt>
+      <dd>MySQL 8.0 (InnoDB, utf8mb4).</dd>
+      <dt>Professor orientador</dt>
+      <dd>Prof. Dr. Diego Marques de Carvalho (UNICID - Modelagem de Banco de Dados)</dd>
+    </dl>
+    <h3>Responsáveis (Data Owners e Data Stewards)</h3>
+    <div class="tw"><table><thead><tr><th>Integrante</th><th>Papel e responsabilidade</th></tr></thead><tbody id="team"></tbody></table></div>
+    <div class="legend" aria-label="Legenda">
+      <span><b>Data Owner:</b> responde pelas regras de negócio dos dados.</span>
+      <span><b>Data Steward:</b> responde pela qualidade técnica e pelo dicionário.</span>
+      <span><b>RBAC:</b> ADM = Administrador; ATD = Atendente; SIS = Sistema (aplicação). C = criar, R = ler, U = atualizar. Não há exclusão física (D).</span>
+    </div>
+  </section>
+
+  <section class="card panel" aria-label="Painel de controle">
+    <a id="pdfBtn" class="btn" href="docs/Especificacao_Requisitos_Regras_Negocio_BD.pdf" download>Baixar Especificação de Requisitos (PDF)</a>
+    <button id="derBtn" class="btn" type="button">Abrir DER</button>
+    <input id="search" type="search" placeholder="Filtrar por tabela ou coluna (ex.: cliente, id_atendimento)" aria-label="Filtrar por tabela ou coluna" autocomplete="off">
+    <p id="count" class="count" aria-live="polite"></p>
+  </section>
+
+  <div id="dict" class="dict"></div>
+  <p id="empty" hidden>Nenhuma tabela ou coluna corresponde ao filtro. Limpe o campo de busca para ver o dicionário completo.</p>
+  <noscript><p>Este dicionário precisa de JavaScript habilitado.</p></noscript>
+  <footer>Dicionário de Dados - Grupo 2 - UNICID, 2026. Classificação LGPD: DPS = dado pessoal sensível; DP = dado pessoal; N/A = não aplicável.</footer>
+</main>
+
+<div id="derModal" class="modal" hidden role="dialog" aria-modal="true" aria-label="Diagrama Entidade-Relacionamento">
+  <div class="mbar">
+    <span>Diagrama Entidade-Relacionamento (roda do mouse = zoom; arraste = mover)</span>
+    <button id="zIn" class="btn" type="button" aria-label="Aumentar zoom">Zoom +</button>
+    <button id="zOut" class="btn" type="button" aria-label="Diminuir zoom">Zoom -</button>
+    <button id="zReset" class="btn" type="button">Reset</button>
+    <button id="derClose" class="btn ghost" type="button">Fechar</button>
+  </div>
+  <div id="derView" class="view">
+    <img id="derImg" src="assets/der.png" alt="Diagrama Entidade-Relacionamento do sistema do salão" draggable="false">
+    <div id="derMsg"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
